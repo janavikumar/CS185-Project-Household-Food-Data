@@ -1,0 +1,33 @@
+food,retail weight (lbs/year),loss from retail (percent),consumer weight (lbs/year),nonedible loss from consumer (percent),other loss from consumer (percent)
+Plain whole milk,45.69658502,12,40.21299481,0,20
+Plain 2-percent milk,45.69658502,12,40.21299481,0,20
+Plain 1-percent milk,24.23714986,12,21.32869187,0,20
+Skim milk,17.69524603,12,15.5718165,0,20
+Whole flavored milk,1.849002559,12,1.627122252,0,45
+Lowfat flavored milk,12.06883421,12,10.62057411,0,45
+Buttermilk,1.596110069,12,1.404576861,0,18
+Refrigerated yogurt,14.69177061,12,12.92875813,0,21
+Cheddar cheese,10.15556163,6,9.54622793,0,11
+Other American cheese,3.855891398,6,3.624537914,0,28
+Provolone cheese,0.689601396,6,0.648225313,0,14
+Romano cheese,0.139430907,6,0.131065053,0,8
+Parmesan cheese,0.445163016,6,0.418453235,0,8
+Mozarella cheese,11.27464884,6,10.59816991,0,31
+Ricotta cheese,0.89282576,6,0.839256215,0,12
+Other Italian cheese,3.193134829,6,3.001546739,0,16
+Swiss cheese,1.050966244,6,0.98790827,0,50
+Brick cheese,0.009743017,6,0.009158436,0,40
+Muenster cheese,0.502440795,6,0.472294347,0,35
+Blue cheese,0.317181106,6,0.29815024,0,43
+Other miscellaneous cheese,1.476901642,6,1.388287544,0,42
+Regular cottage cheese,0.988689523,12,0.87004678,0,31
+Lowfat cottage cheese,1.130375738,12,0.994730649,0,4
+Regular ice cream,12.5790641,12,11.06957641,0,24
+Lowfat ice cream (ice milk),6.271679587,12,5.519078036,0,24
+Frozen yogurt and other miscelleneous frozen products,3.663781315,12,3.224127557,0,33
+Evaporated and condensed canned whole milk,1.332169645,12,1.172309288,0,15
+Evaporated and condensed bulk whole milk,0.852136611,12,0.749880218,0,15
+Evaporated and condensed bulk and canned skim milk,5.484438096,12,4.826305524,0,15
+Dry whole milk,0.31827626,1,0.315093497,0,41
+Nonfat dry milk,3.292144062,1,3.259222622,0,41
+Dry buttermilk,0.333834521,1,0.330496175,0,41
