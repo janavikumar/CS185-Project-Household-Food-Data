@@ -91,7 +91,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a href="content.html">Consumer Food Loss</a></li>
-            <li><a href="content.html">Food Access Interactive Map</a></li>
+            <li><a href="mapContent.html">Food Access Interactive Map</a></li>
           </ul>
         </li>
         <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
@@ -130,6 +130,8 @@
     let width = 960;
     let height = 470;
     let platform = Stardust.platform("webgl-2d", canvas, width, height);
+  //  let yScale = Stardust.scale.linear().domain([ 0, 1 ]).range([ 500, 100 ]);
+
 
     // SVG file created from Adobe Illustrator:
     let svgFile = `
