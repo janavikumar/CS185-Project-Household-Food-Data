@@ -43,14 +43,34 @@
     border-right: none; /* Prevent double borders */
 }
 
+.options h1{
+  color: purple;
+  margin-left: 120px;
+  font-style: italic;
+}
+
+.legend_title p {margin-left: 650px; font-size: 20px; background-color: #f7d5d3;}
+
+.legend { list-style: none; }
+.legend li { float: right; margin-right: 150px; margin-top: 20px;font-size: 30px;}
+.legend span { border: 1px solid #ccc; float: left; width: 50px; height: 50px; margin: 2px; }
+/* your colors */
+.legend .loss{ background-color: #ff00ff; }
+.legend .use { background-color: #000000; }
+
 </style>
 <div class="jumbotron text-center">
   <h1> Household Food Data Visualization </h1>
   <p>Consumer Food: Use vs Loss</p>
 </div>
-<div class="key">
-  <h2> <span style="color:#000000"> - </span> Use <br> <span style="color:#DA70D6"> - </span> Loss </h2>
+
+<div class="legend_title">
+  <p>2015 Average Consumer Food Loss and Use in lbs</p>
 </div>
+<ul class="legend">
+    <li><span class="loss"></span> Loss</li>
+    <li><span class="use"></span> Use</li>
+</ul>
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
@@ -89,8 +109,14 @@
 <div class = "axis">
   <h2> Vegetables Fruits Dairy Meats </h2>
 </div>
+
 <div data-switch="mode">
-    <button class="active" data-value="mode1">Multi-column</button><button data-value="mode2">Single-column</button>
+  <div class="options">
+  <h1> &#9;Viewing Options</h1>
+</div>
+
+<div data-switch="mode">
+    <button class="active" style="font-size : 20px; width: 25%; height: 50px;" data-value="mode1">Multi-column by Food Category</button><button style="font-size : 20px; width: 25%; height: 50px;" data-value="mode2">Single-column: totalled loss and use</button>
     <div class="fps"></div>
 </div>
 <div class="initializing"><p>Initializing...</p></div>
