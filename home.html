@@ -11,15 +11,19 @@
 <body>
 <style>
 .jumbotron {
-    background-color: #581845;
-    color: #E2E0CE;
+    background:url("bg.jpg");
+    background-size: 100% 100%;
+    color: #black;
+}
+.h2{
+    font-size:10px;
 }
 </style>
 <style>
 .btn-group button {
-    background-color: #F9DBB3; 
+    background-color: white; 
     border: 1px white;
-    color: #581845; 
+    color: black; 
     padding: 10px 24px; /* Some padding */
     cursor: pointer; /* Pointer/hand icon */
     float: left; /* Float the buttons side by side */
@@ -38,16 +42,19 @@
 
 /* Add a background color on hover */
 .btn-group button:hover {
-    background-color: #F5B561;
+    background-color: #9CBA7F;
 }
 </style>
 <div class="jumbotron text-center">
   <h1>Household Food Data Visualization</h1> 
-  <p>A look into the interaction between people and their food</p> 
-  <p>Choose your Visualization</p>
+  <h2>A look into the interaction between people and their food</h2> 
+  <p> Using data from the <a href ="https://www.ers.usda.gov/data-products/food-availability-per-capita-data-system/food-availability-per-capita-data-system/#Loss-Adjusted%20Food%20Availability"><font color=#577A3A>USDA</a></font>, the following visualizations show</p>
+  <p>1) Graphical Breakdown of Annual Consumer Loss per Food Group </p>
+  <p>2) Interactive Map Visualization of Annual Food Availability</p>
+  <i><p>Choose your Visualization</p></i>
   <div class="btn-group" style="width:100%">
-  <a href = "content.html"><button style="width:50%">Visualization 1</button></a>
-  <a href = "content.html"><button style="width:50%">Visualization 2</button></a>
+  <a href = "content.html"><button style="width:50%">Consumer Loss per Food Group</button></a>
+  <a href = "content.html"><button style="width:50%">Map of Food Availability</button></a>
 </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -68,8 +75,8 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="content.html">Visualization 1</a></li>
-            <li><a href="content.html">Visualization 2</a></li>
+            <li><a href="content.html">Consumer Loss per Food Group</a></li>
+            <li><a href="content.html">Map of Food Availability</a></li>
           </ul>
         </li>
         <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
