@@ -43,20 +43,24 @@
     border-right: none; /* Prevent double borders */
 }
 
-.options h1{
+.options h2{
   color: purple;
   margin-left: 120px;
   font-style: italic;
 }
 
-.legend_title p {margin-left: 650px; font-size: 20px; background-color: #f7d5d3;}
+h2 {
+  margin-left: 40px;
+}
+
+.legend_title p {margin-left: 10px; font-size: 30px;}
 
 .legend { list-style: none; }
-.legend li { float: right; margin-right: 150px; margin-top: 20px;font-size: 30px;}
+.legend li { float: left; margin-left: 550px; margin-top:25px; margin-right: 300px; font-size: 30px;}
 .legend span { border: 1px solid #ccc; float: left; width: 50px; height: 50px; margin: 2px; }
 /* your colors */
-.legend .loss{ background-color: #ff00ff; }
 .legend .use { background-color: #000000; }
+.legend .loss{ background-color: #ff00ff; }
 
 </style>
 <div class="jumbotron text-center">
@@ -65,11 +69,11 @@
 </div>
 
 <div class="legend_title">
-  <p>2015 Average Consumer Food Loss and Use in lbs</p>
+  <p>2015 Average Consumer Food Loss and Use in lbs/year</p>
 </div>
 <ul class="legend">
-    <li><span class="loss"></span> Loss</li>
     <li><span class="use"></span> Use</li>
+    <li><span class="loss"></span> Loss</li>
 </ul>
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -107,16 +111,16 @@
 <link rel="stylesheet" href="../common/style.css" type="text/css" />
 <canvas id="main-canvas" /></canvas>
 <div class = "axis">
-  <h2> Vegetables Fruits Dairy Meats </h2>
+  <h2 id="title1"> Dairy Fruits Meat Vegetables </h2>
 </div>
 
-<div data-switch="mode">
+<div data-switch="mode" style="margin-left:40px;">
   <div class="options">
-  <h1> &#9;Viewing Options</h1>
+  <h2 style="margin-top:30px"> &#9;Viewing Options</h2>
 </div>
 
-<div data-switch="mode">
-    <button class="active" style="font-size : 20px; width: 25%; height: 50px;" data-value="mode1">Multi-column by Food Category</button><button style="font-size : 20px; width: 25%; height: 50px;" data-value="mode2">Single-column: totalled loss and use</button>
+<div data-switch="mode" style="margin-left:40px;">
+    <button class="active" style="font-size : 20px; width: 25%; height: 50px;" data-value="mode1">Multi-column by Food Category</button><button style="font-size : 20px; width: 25%; height: 50px margin-bottom:40px;" data-value="mode2">Single-column: totalled loss and use</button>
     <div class="fps"></div>
 </div>
 <div class="initializing"><p>Initializing...</p></div>
@@ -144,18 +148,38 @@
         </svg>
     `;
 
-    var data = [];
-    [ 100, 143, 86,100, 94, 43, 35 ,37].forEach((x, index) => {
-        for(let i = 0; i < x; i++) {
-            data.push({
-                type: index % 2,
-                column: Math.floor(index / 2)
-            });
+  var mydata = [];
+  d3.csv("data/food_group_loss.csv", function(d) {
+    return {
+      consumer_weight : +d["consumer weight (lbs/year)"],
+      retail_weight : +d["retail weight (lbs/year)"],
+      total_loss_percent : +d["total loss all levels (percent)"]*.01
+    };
+  }, function(data) {
+      data.forEach(function(d, index) {
+        var used_weight = Math.round(d.retail_weight - d.retail_weight * d.total_loss_percent);
+        var loss_weight = Math.round(d.consumer_weight - used_weight);
+        for(let i = 0; i < loss_weight; i++) {
+          mydata.push({
+            type: 1,
+            column: index
+          });
         }
-    });
+        console.log(mydata.length);
+        for(let i = 0; i < used_weight; i++) {
+          mydata.push({
+            type: 0,
+            column: index
+        });
+        }
+      });
+      data_loaded();
+  });
+
+  function data_loaded() {
     var typeCounter = [ 0, 0, 0 ];
     var typeColumnCounter = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
-    data.forEach((d) => {
+    mydata.forEach((d) => {
         d.typeIndex = typeCounter[d.type]++;
         d.typeColumnIndex = typeColumnCounter[3 * d.column + d.type]++;
     });
@@ -197,25 +221,29 @@
     isotypes.attr("position", interpolateScale(pScale(), qScale()));
     isotypes.attr("color", d => colors[d.type]);
     isotypes.attr("size", 1.0);
-    isotypes.data(data);
+    isotypes.data(mydata);
 
     function render() {
         platform.clear();
         isotypes.render();
     }
 
-    console.log(data.length);
+    console.log(mydata.length);
 
     render();
 
     switches.mode_changed = function(newValue) {
         beginTransition((t) => {
-            if(newValue == "mode1")
+            if(newValue == "mode1") {
                 interpolateScale.t(1 - t);
-            if(newValue == "mode2")
+                document.getElementById("title1").innerHTML = "Dairy Meat Fruits Vegetables";
+            }
+            if(newValue == "mode2") {
                 interpolateScale.t(t);
+                document.getElementById("title1").innerHTML = "Used Loss";
+            }
             render();
         });
     };
-
+  }
 </script>
