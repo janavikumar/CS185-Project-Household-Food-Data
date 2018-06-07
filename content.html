@@ -13,8 +13,9 @@
 <style>
 
 .axis h2{
-  word-spacing: 80px;
+  word-spacing: 100px;
   font-size: 23px;
+  margin-left:  20px;
 
 }
 
@@ -116,11 +117,11 @@ h2 {
 
 <div data-switch="mode" style="margin-left:40px;">
   <div class="options">
-  <h2 style="margin-top:30px"> &#9;Viewing Options</h2>
+  <h2 style="margin-top:30px; margin-left: 175px"> &#9;&#9;Viewing Options</h2>
 </div>
 
 <div data-switch="mode" style="margin-left:40px;">
-    <button class="active" style="font-size : 20px; width: 25%; height: 50px;" data-value="mode1">Multi-column by Food Category</button><button style="font-size : 20px; width: 25%; height: 50px margin-bottom:40px;" data-value="mode2">Single-column: totalled loss and use</button>
+    <button class="active" style="font-size : 20px; width: 25%; height: 50px; margin-bottom:40px;" data-value="mode1">Multi-column by Food Category</button><button style="font-size : 20px; width: 25%; height: 50px" data-value="mode2">Single-column: totalled loss and use</button>
     <div class="fps"></div>
 </div>
 <div class="initializing"><p>Initializing...</p></div>
@@ -237,10 +238,14 @@ h2 {
             if(newValue == "mode1") {
                 interpolateScale.t(1 - t);
                 document.getElementById("title1").innerHTML = "Dairy Meat Fruits Vegetables";
+                document.getElementById("title1").style["margin-left"] = "20px";
+                  document.getElementById("title1").style["word-spacing"] = "100px";
             }
             if(newValue == "mode2") {
                 interpolateScale.t(t);
                 document.getElementById("title1").innerHTML = "Used Loss";
+                document.getElementById("title1").style["margin-left"] = "150px";
+                document.getElementById("title1").style["word-spacing"] = "250px";
             }
             render();
         });
